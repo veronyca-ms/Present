@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="carrinho.css">
+    <script>
+        function carregarCarrinho() {
+            const carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            const carrinhoContainer = document.getElementById('selected-items');
+            carrinhoContainer.innerHTML = '';
+
+            if (carrinho.length > 0) {
+                carrinho.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'item';
+                    itemElement.innerHTML = `${item} <button class="remove" onclick="removerDoCarrinho(${index})">Remover</button>`;
+                    carrinhoContainer.appendChild(itemElement);
+                });
+            } else {
+                const vazioElement = document.createElement('p');
+                vazioElement.textContent = 'Seu carrinho está vazio.';
+                carrinhoContainer.appendChild(vazioElement);
+            }
+        }
+
+        function removerDoCarrinho(index) {
+            let carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            carrinho.splice(index, 1);
+            sessionStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function finalizarCompra() {
+            const feedback = document.getElementById('comment').value;
+            sessionStorage.setItem('feedback', feedback);
+            window.location.href = 'visualizar-presentes.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarCarrinho);
+    </script>
+</head>
+<body>
+    <header>
+        <button type="button" onclick="window.history.back()">Voltar</button>
+    </header>
+    <div class="container">
+        <h1>Seu Carrinho</h1>
+        <form action="javascript:void(0);" onsubmit="finalizarCompra()">
+            <div id="selected-items">
+                <!-- Itens selecionados serão listados aqui -->
+            </div>
+            <label for="comment">Deixe um Comentário:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50" placeholder="Seu feedback..."></textarea><br>
+            <button type="submit">Completar Pedido</button>
+        </form>
+    </div>
+</body>
+</html>

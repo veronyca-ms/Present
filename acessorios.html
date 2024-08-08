@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha Seus Acessórios</title>
+    <link rel="stylesheet" href="presentes.css">
+    <script>
+        function adicionarAoCarrinho(item) {
+            const carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            if (carrinho.length >= 5) {
+                alert('Você só pode adicionar até 5 presentes ao carrinho.');
+                return;
+            }
+            if (!carrinho.includes(item)) {
+                carrinho.push(item);
+            }
+            sessionStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert(item + ' foi adicionado ao carrinho!');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="carrinho-container">
+            <a href="carrinho.html">
+                <button id="carrinho-btn">Ver Carrinho</button>
+            </a>
+        </div>
+        <button type="button" onclick="window.history.back()">Voltar</button>
+    </header>
+
+    
+    <div class="container">
+        <h1>Escolha Seus Acessórios</h1>
+        <div class="item">
+            <img src="imagens/relogio.jpg" alt="Relógio">
+            <label for="acessorio1">Relógio</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Relógio')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/oculos.jpg" alt="Óculos de Sol">
+            <label for="acessorio2">Óculos de Sol</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Óculos de Sol')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/pulseira.jpg" alt="Pulseira">
+            <label for="acessorio3">Pulseira</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Pulseira')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/anel.jpg" alt="Anel">
+            <label for="acessorio4">Boné</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Anel')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/Colar.jpg" alt="Cachecol">
+            <label for="acessorio5">Colar</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Cachecol')">+</button>
+        </div>
+        
+    </div>
+</body>
+</html>

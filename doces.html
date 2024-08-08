@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha Seus Doces</title>
+    <link rel="stylesheet" href="presentes.css">
+    <script>
+        function adicionarAoCarrinho(item) {
+            const carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            if (carrinho.length >= 5) {
+                alert('Você só pode adicionar até 5 presentes ao carrinho.');
+                return;
+            }
+            if (!carrinho.includes(item)) {
+                carrinho.push(item);
+            }
+            sessionStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert(item + ' foi adicionado ao carrinho!');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="carrinho-container">
+            <a href="carrinho.html">
+                <button id="carrinho-btn">Ver Carrinho</button>
+            </a>
+        </div>
+        <button type="button" onclick="window.history.back()">Voltar</button>
+    </header>
+    <div class="container">
+        <h1>Comidinha</h1>
+        <div class="item">
+            <img src="imagens/guloseimas.jpg" alt="Guloseimas Diversas">
+            <label for="doce1">Guloseimas Diversas</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Guloseimas Diversas')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/chocolate.jpg" alt="Chocolates">
+            <label for="doce2">Chocolates</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Chocolates')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/bala.jpg" alt="Balas">
+            <label for="doce3">Balinhas</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Balas')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/biscoitos.jpg" alt="Biscoitos">
+            <label for="doce4">Biscoitos</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Biscoitos')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/salgadinhos.jpg" alt="Gomas de Mascar">
+            <label for="doce5">Salgadinhos</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Gomas de Mascar')">+</button>
+        </div>
+       
+    </div>
+</body>
+</html>

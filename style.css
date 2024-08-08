@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FFC0CB; /* Cor de fundo rosa */
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.topic {
+  background-color: #fff;
+  border: 2px solid #ff4500; /* Borda vermelha que combina com o rosa */
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.topic img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.topic h2 {
+  color: #ff4500; /* Cor do texto */
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover .topic {
+  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .topics {
+      flex-direction: column;
+  }
+
+  .topic {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+}
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar Presentes</title>
+    <link rel="stylesheet" href="visualizar-presentes.css">
+    <script>
+        function carregarPresentes() {
+            const carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            const feedback = sessionStorage.getItem('feedback') || '';
+            const listaPresentes = document.getElementById('lista-presentes');
+            const feedbackElement = document.getElementById('feedback');
+
+            listaPresentes.innerHTML = '';
+            if (carrinho.length > 0) {
+                carrinho.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'item';
+                    itemElement.textContent = item;
+                    listaPresentes.appendChild(itemElement);
+                });
+            } else {
+                listaPresentes.textContent = 'Nenhum presente selecionado.';
+            }
+
+            feedbackElement.textContent = feedback || 'Nenhum feedback deixado.';
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarPresentes);
+    </script>
+</head>
+<body>
+    <header>
+        <button type="button" onclick="window.location.href='index.html'">Sair</button>
+    </header>
+    <div class="container">
+        <h1>Presentes Selecionados</h1>
+        <div id="lista-presentes">
+            <!-- Lista de presentes será carregada aqui -->
+        </div>
+        <div id="feedback">
+            <!-- Feedback será carregado aqui -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolha Seus Presentes Românticos</title>
+    <link rel="stylesheet" href="presentes.css">
+    <script>
+        function adicionarAoCarrinho(item) {
+            const carrinho = JSON.parse(sessionStorage.getItem('carrinho')) || [];
+            if (carrinho.length >= 5) {
+                alert('Você só pode adicionar até 5 presentes ao carrinho.');
+                return;
+            }
+            if (!carrinho.includes(item)) {
+                carrinho.push(item);
+            }
+            sessionStorage.setItem('carrinho', JSON.stringify(carrinho));
+            alert(item + ' foi adicionado ao carrinho!');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="carrinho-container">
+            <a href="carrinho.html">
+                <button id="carrinho-btn">Ver Carrinho</button>
+            </a>
+        </div>
+        <button type="button" onclick="window.history.back()">Voltar</button>
+    </header>
+    <div class="container">
+        <h1>Presentinho Romântico</h1>
+        <div class="item">
+            <img src="imagens/cartinhas.jpg" alt="Cesta de Café da Manhã">
+            <label for="romantico1">Cartinhas</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Cesta de Café da Manhã')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/buque.jpg" alt="Buquê de Flores">
+            <label for="romantico2">Buquê de Flores</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Buquê de Flores')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/jantar.jpg" alt="Jantar a Dois">
+            <label for="romantico3">Jantar a Dois</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Jantar a Dois')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/colar.jpg" alt="Colar Personalizado">
+            <label for="romantico4">Colar Personalizado</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Colar Personalizado')">+</button>
+        </div>
+        <div class="item">
+            <img src="imagens/cartão.jpg" alt="Cartão com Mensagem">
+            <label for="romantico5">Cartão com Mensagem</label>
+            <button type="button" class="add-btn" onclick="adicionarAoCarrinho('Cartão com Mensagem')">+</button>
+        </div>
+    </div>
+</body>
+</html>
