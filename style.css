@@ -11,7 +11,7 @@ body {
 }
 
 h1 {
-  color: #fff;
+  color: #ff4500;
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -48,6 +48,17 @@ h1 {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.container .add-btn {
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 10px;
 }
 
 a:hover .topic {
